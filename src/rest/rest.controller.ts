@@ -6,6 +6,7 @@ import { TriumphsLibrary } from '../libraries/triumphs.library';
 import { AvatarsLibrary } from '../libraries/avatars.library';
 import { GamesTypesLibrary } from '../libraries/games-types.library';
 import { CyclesLibrary } from '../libraries/cycles.library';
+import { QuestsLibrary } from '../libraries/quests.library';
 
 @Controller('rest')
 /**
@@ -137,6 +138,24 @@ export class RestController {
    */
   getCycle(@Param('id') id) {
     return CyclesLibrary.find(id);
+  }
+
+  @Get('quests')
+  /**
+   * Endpoint /rest/quests
+   * Returns a quests list
+   */
+  getQuests() {
+    return QuestsLibrary.all();
+  }
+
+  @Get('quests/:id')
+  /**
+   * Endpoint /rest/quests/;id
+   * Returns a quest
+   */
+  getQuest(@Param('id') id) {
+    return QuestsLibrary.find(id);
   }
 
 }
